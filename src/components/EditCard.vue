@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <!-- TODO: Stylize button to make it fit rest of app -->
-                        <input type="file" @change="onFileSelected">
+                        <input type="file" accept="image/*" @change="onFileSelected">
                         <label class="active">Upload Profile Picture: </label>
                     </div>
                 </div>
