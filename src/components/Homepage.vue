@@ -2,7 +2,7 @@
     <div id="homepage">
         <ul class="collection with-header">
             <li class="collection-header"><h4>Business Cards</h4></li>
-            <!-- TODO: Research v-for function to get better understanding -->
+            <!-- TODO: Research v-for function to get better understanding of it -->
             <li v-for="card in cards" v-bind:key="card.id" class="collection-item" id="homepage-card-name">
                 <div class="chip">{{card.card_id}}</div>
                 <!-- Edge Case if user inputs name with crazy capitalization - looks nice and readable now -->
