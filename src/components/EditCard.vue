@@ -34,6 +34,13 @@
                         <label class="active">E-mail Address</label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <!-- TODO: Stylize button to make it fit rest of app -->
+                        <input type="file" @change="onFileSelected">
+                        <label class="active">Upload Profile Picture: </label>
+                    </div>
+                </div>
                 <router-link to="/" class="btn grey">Cancel</router-link>
                 <button type="submit" class="btn blue">Edit Card</button>
             </form>
@@ -81,12 +88,16 @@ export default {
                         phone: this.phone,
                         email: this.email
                     })
-                    .then(() =>{
-                        this.$router.push({name: 'view-card', 
-                        params: {card_id: this.card_id}})
+                    .then(() =>{ 
+                            this.$router.push({name: 'view-card', 
+                            params: {card_id: this.card_id}})
+                        })  
                     })
-                })
             })
+        },
+        onFileSelected (event) {
+            this.profilePicture = event.target.files[0]
+            db.storage().ref(this.card_id+'_profilePicture').put(this.profilePicture)
         }
     }
 }
