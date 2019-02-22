@@ -13,15 +13,17 @@
             <li class="collection-item">E-mail Address: {{email.toLowerCase()}}</li>
         </ul>
         <router-link to="/" class="btn grey">Back</router-link>
-        <button @click="deleteCard" class="btn red">Delete Card</button>
-        <router-link to="/" class="btn"><i class="fa fa-cloud"></i> button</router-link>
+        <button @click="deleteCard" class="btn red right"><i class="far fa-trash-alt"></i> Delete Card</button>
+        <router-link v-bind:to="{name: 'edit-card', params: {card_id: card_id}}" 
+                                class="btn blue">
+                                <i class="fas fa-pencil-alt"></i>
+                                Edit Card
+        </router-link>
 
-        <div class="fixed-action-btn" id="edit-card-btn">
-            <router-link v-bind:to="{name: 'edit-card', params: {card_id: card_id}}" 
-                                    class="btn-floating btn-large blue">
-                <i class="fa fa-pencil"></i>
+        <!-- <div class="fixed-action-btn" id="edit-card-btn">
+            
             </router-link>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -42,7 +44,7 @@
     }
 
     #profile-picture{
-        border: 2px solid blue;
+        border: 2px solid #2196F3;
         height: 90px;
         width: 90px;
     }

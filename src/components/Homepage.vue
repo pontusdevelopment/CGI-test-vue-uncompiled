@@ -15,12 +15,14 @@
                 </router-link>
                 </li>
         </ul>
-
-        <div class="fixed-action-btn" id="new-card-btn">
+            <router-link to="/new" class="btn-large blue right">
+                <i class="fa fa-plus"></i> New Card
+            </router-link>
+        <!-- <div class="fixed-action-btn" id="new-card-btn">
             <router-link to="/new" class="btn-floating btn-large blue">
                 <i class="fa fa-plus"></i>
             </router-link>
-        </div>
+        </div> -->
     </div>
 </template>
 

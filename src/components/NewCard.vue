@@ -7,19 +7,19 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <input type="text" v-model="card_id" required>
-                        <label>Card ID#</label>
+                        <label>Card ID#*</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input type="text" v-model="name" required>
-                        <label>First Name</label>
+                        <label>First Name*</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input type="text" v-model="surName" required>
-                        <label>Last Name</label>
+                        <label>Last Name*</label>
                     </div>
                 </div>
                 <div class="row">
@@ -36,9 +36,9 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <!-- TODO: Stylize button to make it fit rest of app -->
                         <input type="file" @change="onFileSelected">
                         <label class="active">Upload Profile Picture: </label>
-                        <!-- <button @click="onUpload">Upload Picture</button> -->
                     </div>
                 </div>
                 <router-link to="/" class="btn grey">Cancel</router-link>
