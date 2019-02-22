@@ -15,14 +15,9 @@
                 </router-link>
                 </li>
         </ul>
-            <router-link to="/new" class="btn-large blue right">
-                <i class="fa fa-plus"></i> New Card
-            </router-link>
-        <!-- <div class="fixed-action-btn" id="new-card-btn">
-            <router-link to="/new" class="btn-floating btn-large blue">
-                <i class="fa fa-plus"></i>
-            </router-link>
-        </div> -->
+        <router-link to="/new" class="btn-large blue right">
+            <i class="fa fa-plus"></i> New Card
+        </router-link>
     </div>
 </template>
 
@@ -37,11 +32,6 @@
         background-color: #2196F3;
         border-radius: 3px;
     }
-
-    #homepage-card-name {
-        /* text-transform: lowercase; */
-    }
-
     .secondary-content{
         color: #2196F3;
     }

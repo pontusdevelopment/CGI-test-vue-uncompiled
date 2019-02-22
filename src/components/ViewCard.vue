@@ -19,11 +19,6 @@
                                 <i class="fas fa-pencil-alt"></i>
                                 Edit Card
         </router-link>
-
-        <!-- <div class="fixed-action-btn" id="edit-card-btn">
-            
-            </router-link>
-        </div> -->
     </div>
 </template>
 
