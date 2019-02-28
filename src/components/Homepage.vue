@@ -8,7 +8,7 @@
                 <!-- Edge Case if user inputs name with crazy capitalization - looks nice and readable now -->
                 {{card.name.charAt(0).toUpperCase()}}{{card.name.slice(1).toLowerCase()}} 
                 {{card.surName.charAt(0).toUpperCase()}}{{card.surName.slice(1).toLowerCase()}}
-
+                <!-- TODO: Change route from card_id to name+surName -->
                 <router-link class="secondary-content" v-bind:to="{name: 'view-card', params: { card_id: card.card_id}}">
                     View Card
                     <i class="fa fa-eye"></i>

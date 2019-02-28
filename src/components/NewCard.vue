@@ -24,8 +24,10 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input type="tel" v-model="phone">
-                        <label>Telephone number</label>
+                        <input type="tel" 
+                        v-model="phone"
+                        pattern="[0-9]{10}">
+                        <label>Telephone number (10 digits)</label>
                     </div>
                 </div>
                 <div class="row">
@@ -44,6 +46,7 @@
                 <router-link to="/" class="btn grey">Cancel</router-link>
                 <button type="submit" class="btn blue">Add Card</button>
             </form>
+            <button @click="handleSize">Click Me</button>
         </div>
     </div>
 </template>
@@ -87,6 +90,12 @@ export default {
                 this.profilePicture = reader.result
                 console.log(this.profilePicture)
             }
+        },
+        handleSize() {
+            db.firestore().collection('business-cards').get()
+            .then(snapshot => {
+                console.log(snapshot.size)
+            })
         }
     }
 }

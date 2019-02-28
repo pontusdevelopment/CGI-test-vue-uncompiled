@@ -8,6 +8,7 @@ import EditCard from '@/components/EditCard'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -25,7 +26,7 @@ export default new Router({
       component: EditCard
     },
     {
-      path: '/:card_id',
+      path: '/card/:card_id',
       name: 'view-card',
       component: ViewCard
     }
