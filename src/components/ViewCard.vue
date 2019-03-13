@@ -5,12 +5,11 @@
                 <img src="https://propertymarketersllc.com/wp-content/uploads/2018/05/profile-picture-placeholder.png" class="circle responsive-img" id="profile-picture" alt="Profile Picture">
                 <!-- Edge Case if user inputs name with crazy capitalization - looks nice and readable now -->
                 <h4>{{name.charAt(0).toUpperCase()}}{{name.slice(1).toLowerCase()}}
-                    {{surName.charAt(0).toUpperCase()}}{{surName.slice(1).toLowerCase()}}</h4>
-                    
+                    {{surName.charAt(0).toUpperCase()}}{{surName.slice(1).toLowerCase()}}</h4>    
             </li>
-            <li class="collection-item">Card ID#: {{card_id}}</li>
-            <li class="collection-item">Telephone Number: {{phone}}</li>
-            <li class="collection-item">E-mail Address: {{email.toLowerCase()}}</li>
+            <li class="collection-item"><span class="bolded">Card ID#:</span> {{card_id}}</li>
+            <li class="collection-item"><span class="bolded">Telephone Number:</span> {{phone}}</li>
+            <li class="collection-item"><span class="bolded">E-mail Address:</span> {{email.toLowerCase()}}</li>
         </ul>
         <router-link to="/" class="btn grey">Back</router-link>
         <button @click="deleteCard" class="btn red right"><i class="far fa-trash-alt"></i> Delete Card</button>
@@ -23,11 +22,8 @@
 </template>
 
 <style>
-    li > h4{
-        text-transform: capitalize;
-    }
 
-    #edit-card-btn:before{
+ #edit-card-btn:before{
         content: 'Edit Card';
         padding-right: 15px;
         padding-left: 10px;
@@ -42,6 +38,10 @@
         border: 2px solid #2196F3;
         height: 90px;
         width: 90px;
+    }
+
+    .bolded{
+        font-weight: bold;
     }
 </style>
 
@@ -66,18 +66,18 @@ export default {
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 next(vm =>{
-                    vm.card_id = doc.data().card_id
-                    vm.name = doc.data().name
-                    vm.surName = doc.data().surName
-                    vm.phone = doc.data().phone
-                    vm.email = doc.data().email
-
                     db.storage().ref(doc.data().card_id+"_profilePicture").getDownloadURL()
                     .then( url =>{
                         document.getElementById("profile-picture").src = url
                     }).catch( error => {
                         console.log(error)
                     })
+
+                    vm.card_id = doc.data().card_id
+                    vm.name = doc.data().name
+                    vm.surName = doc.data().surName
+                    vm.phone = doc.data().phone
+                    vm.email = doc.data().email
                 })
             })
         })
@@ -90,7 +90,8 @@ export default {
                 db.firestore().collection('business-cards').where('card_id', '==', this.$route.params.card_id).get()
                 .then(querySnapshot => {
                     querySnapshot.forEach(doc => {
-                    doc.ref.delete().then(this.$router.push('/'))
+                    doc.ref.delete()
+                    .then(this.$router.push('/'))
                     
 
                     db.storage().ref(doc.data().card_id+"_profilePicture").delete()

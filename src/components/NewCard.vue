@@ -43,6 +43,7 @@
                         <label class="active">Upload Profile Picture: </label>
                     </div>
                 </div>
+                <p>TEST</p>
                 <router-link to="/" class="btn grey">Cancel</router-link>
                 <button type="submit" class="btn blue">Add Card</button>
             </form>
@@ -54,6 +55,7 @@
 <script>
 import db from './firebaseInit'
 export default {
+    // Name = the ID for parent div above to export
     name: 'new-card',
     data() {
         return {
@@ -67,6 +69,7 @@ export default {
     },
     methods:{
         saveCard() {
+            // Save business card to firebase, firebase variable name as key, Vue variable as value (same names for simplicity)
             db.firestore().collection('business-cards').add({
                 card_id: this.card_id,
                 name: this.name,
@@ -74,9 +77,12 @@ export default {
                 phone: this.phone,
                 email: this.email
             })
+            // Go back to homepage when card has been saved to database and a promise has returned
             .then(docRef => this.$router.push('/'))
-            .catch(error => console.log(err))
+            // Catch any errors if they appear
+            .catch(error => console.log(error))
 
+            // Separate function to save profile picture as it is saved in FireStore. Could change to Base64 and save in firebase above
             db.storage().ref(this.card_id+'_profilePicture').put(this.profilePicture)
             .then(snapshot => {
                 console.log("uploaded photo")
@@ -84,13 +90,18 @@ export default {
         },
         onFileSelected (event) {
             this.profilePicture = event.target.files[0]
-            var reader = new FileReader
-            reader.readAsDataURL(this.profilePicture)
-            reader.onloadend = function(){
-                this.profilePicture = reader.result
-                console.log(this.profilePicture)
-            }
+
+            // Below code is a test if I wanted to implement reading the file as Base64 instead. Decided not to use it.+
+            // var reader = new FileReader
+            // reader.readAsDataURL(this.profilePicture)
+            // reader.onloadend = function(){
+            //     this.profilePicture = reader.result
+            //     console.log(this.profilePicture)
+            // }
         },
+        // Method that I wanted to create in order to set an automatic ID based on the position in the database
+        // Does not work that way with FireBase, so the best solution IMO for this is to create a FB-method to handle this logic
+        // I.E - not useful at the moment, but perhaps a TODO for setting up an API where that logic takes place
         handleSize() {
             db.firestore().collection('business-cards').get()
             .then(snapshot => {

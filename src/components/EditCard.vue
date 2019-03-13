@@ -41,7 +41,7 @@
                         <label class="active">Upload Profile Picture: </label>
                     </div>
                 </div>
-                <router-link to="/" class="btn grey">Cancel</router-link>
+                <router-link v-bind:to="{name: 'view-card', params: { card_id: card_id}}" class="btn grey">Cancel</router-link>
                 <button type="submit" class="btn blue">Edit Card</button>
             </form>
         </div>

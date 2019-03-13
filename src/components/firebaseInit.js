@@ -1,4 +1,4 @@
-// Initializing FireStore DB
+// Initializing FireBase DB
 import firebase from 'firebase'
 import 'firebase/firestore'
 import firebaseConfig from './firebaseConfig'

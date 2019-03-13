@@ -1,4 +1,4 @@
-// Configuration for FireStore DB
+// Configuration for FireBase DB
 
 export default{
     apiKey: "AIzaSyBQH72l9MQgodXQajWIIy4St3rIXPlLZ98",

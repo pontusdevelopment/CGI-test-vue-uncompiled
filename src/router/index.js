@@ -8,11 +8,12 @@ import EditCard from '@/components/EditCard'
 Vue.use(Router)
 
 export default new Router({
+  // Removing the # in URL using history mode. Ex app.com/card/1 instead of app.com/#/card/1
   mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'Homepage',
+      name: 'homepage',
       component: Homepage
     },
     {
