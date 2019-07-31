@@ -13,7 +13,7 @@
                     View Card
                     <i class="fa fa-eye"></i>
                 </router-link>
-                </li>
+            </li>
         </ul>
         <router-link to="/new" class="btn-large blue right">
             <i class="fa fa-plus"></i> New Card
